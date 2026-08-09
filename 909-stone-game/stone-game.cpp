@@ -1,10 +1,6 @@
 class Solution {
 public:
- bool stoneGame(vector<int>& nums) {
-        int n=nums.size();
-        vector<vector<int>>dp(n, vector<int>(n,-1));
-         return solve(nums, dp, 0, nums.size()-1)>=0;
-    }
+
 
 int solve(vector<int>&nums,vector<vector<int>>&dp,int i, int j){
     if(i==j)return nums[i];
@@ -16,5 +12,11 @@ int solve(vector<int>&nums,vector<vector<int>>&dp,int i, int j){
     return dp[i][j]=max(left, right);
 
 }
+
+ bool stoneGame(vector<int>& nums) {
+        int n=nums.size();
+        vector<vector<int>>dp(n, vector<int>(n,-1));
+         return solve(nums, dp, 0, nums.size()-1)>=0;
+    }
    
 };
