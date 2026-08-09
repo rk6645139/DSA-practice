@@ -2,21 +2,26 @@ class Solution {
 public:
 
 
-int solve(vector<int>&nums,vector<vector<int>>&dp,int i, int j){
-    if(i==j)return nums[i];
-
-    if(dp[i][j]!=-1)return dp[i][j];
-
-    int left=nums[i]-solve(nums,dp, i+1, j);
-    int right=nums[j]-solve(nums,dp, i,  j-1);
-    return dp[i][j]=max(left, right);
-
-}
 
  bool stoneGame(vector<int>& piles) {
         int n=piles.size();
         vector<vector<int>>dp(n, vector<int>(n,-1));
-         return solve(piles, dp, 0, piles.size()-1)>=0;
+        for(int i=0; i<n; i++){
+            dp[i][i]=piles[i];
+        }
+        for(int len=2;len<=n; len++){
+            for(int i=0;  i+len-1<n;i++){
+
+            
+            int j=i+len-1;
+            int left=piles[i]-dp[i+1][j];
+    int right=piles[j]-dp[i][j-1];
+
+    dp[i][j]=max(left, right);
+
+            }
+        }
+         return dp[0][n-1]>0;
     }
    
 };
