@@ -13,10 +13,10 @@ int solve(vector<int>&nums,vector<vector<int>>&dp,int i, int j){
 
 }
 
- bool stoneGame(vector<int>& nums) {
-        int n=nums.size();
+ bool stoneGame(vector<int>& piles) {
+        int n=piles.size();
         vector<vector<int>>dp(n, vector<int>(n,-1));
-         return solve(nums, dp, 0, nums.size()-1)>=0;
+         return solve(piles, dp, 0, piles.size()-1)>=0;
     }
    
 };
